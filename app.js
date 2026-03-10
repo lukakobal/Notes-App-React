@@ -18,6 +18,11 @@ export default function App() {
     setInput("");
   }
 
+  function handleDelete(id) {
+    const filteredNotes = notes.filter((note) => note.id !== id);
+    setNotes(filteredNotes);
+  }
+
   return (
     <div className="app">
       <h1>Notes App</h1>
@@ -36,9 +41,11 @@ export default function App() {
         {notes.map((note) => (
           <div key={note.id} className="note">
             {note.text}
+            <button onClick={() => handleDelete(note.id)}>Delete </button>
           </div>
         ))}
       </div>
     </div>
   );
 }
+
