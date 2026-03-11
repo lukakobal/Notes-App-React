@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./styles.css";
 
 export default function App() {
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState(() => {
+    const savedNotes = localStorage.getItem("notes");
+    return savedNotes ? JSON.parse(savedNotes) : [];
+  });
 
   const [input, setInput] = useState("");
 
@@ -22,6 +25,18 @@ export default function App() {
     const filteredNotes = notes.filter((note) => note.id !== id);
     setNotes(filteredNotes);
   }
+
+  useEffect(() => {
+    localStorage.setItem("notes", JSON.stringify(notes));
+  }, [notes]);
+
+  useEffect(() => {
+    const savedNotes = localStorage.getItem("notes");
+
+    if (savedNotes) {
+      setNotes(JSON.parse(savedNotes));
+    }
+  }, []);
 
   return (
     <div className="app">
@@ -48,4 +63,3 @@ export default function App() {
     </div>
   );
 }
-
