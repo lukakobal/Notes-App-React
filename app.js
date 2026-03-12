@@ -8,6 +8,7 @@ export default function App() {
   });
 
   const [input, setInput] = useState("");
+  const [search, setSearch] = useState("");
 
   function addNote() {
     if (!input.trim()) return;
@@ -38,6 +39,10 @@ export default function App() {
     }
   }, []);
 
+  const filteredNotes = notes.filter((note) =>
+    note.text.toLowerCase().includes(search.toLocaleLowerCase())
+  );
+
   return (
     <div className="app">
       <h1>Notes App</h1>
@@ -53,12 +58,21 @@ export default function App() {
         <button onClick={addNote}>Add</button>
       </div>
       <div className="notes">
-        {notes.map((note) => (
+        {filteredNotes.map((note) => (
           <div key={note.id} className="note">
             {note.text}
             <button onClick={() => handleDelete(note.id)}>Delete </button>
           </div>
         ))}
+      </div>
+      <h1>Search</h1>
+      <div className="input-area">
+        <input
+          type="text"
+          placeholder="Search..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
       </div>
     </div>
   );
