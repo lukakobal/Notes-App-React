@@ -23,6 +23,7 @@ input {
 button {
   padding: 10px 20px;
   cursor: pointer;
+  margin-left: 50px;
 }
 
 .note {
