@@ -1,34 +1,88 @@
-body {
-  font-family: Arial, sans-serif;
-  background: #f4f4f4;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
+body {
+  background: #f4f6f8;
+}
+
+/* glavna aplikacija */
 .app {
-  max-width: 500px;
-  margin: auto;
+  max-width: 600px;
+  margin: 60px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* naslovi */
+h1 {
+  margin-bottom: 20px;
   text-align: center;
 }
 
+/* input območje */
 .input-area {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
 }
 
+/* input */
 input {
   flex: 1;
   padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-size: 16px;
 }
 
+/* add button */
 button {
-  padding: 10px 20px;
+  padding: 10px 16px;
+  border: none;
+  background: #4caf50;
+  color: white;
+  border-radius: 6px;
   cursor: pointer;
-  margin-left: 50px;
+  font-weight: bold;
 }
 
-.note {
-  background: white;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
+button:hover {
+  background: #45a049;
 }
+
+/* notes container */
+.notes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+/* posamezna nota */
+.note {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f9fafb;
+  padding: 12px 14px;
+  border-radius: 6px;
+  border: 1px solid #eee;
+}
+
+/* delete button */
+.note button {
+  background: #e74c3c;
+  padding: 6px 10px;
+  font-size: 14px;
+}
+
+.note button:hover {
+  background: #c0392b;
+}
+
